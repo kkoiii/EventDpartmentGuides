@@ -1,5 +1,13 @@
 // Scroll animation for sections
 document.addEventListener('DOMContentLoaded', () => {
+    // Hide loading overlay when the page loads
+    const loadingOverlay = document.getElementById('loading-overlay');
+    if (loadingOverlay) {
+        window.addEventListener('load', () => {
+            loadingOverlay.classList.add('hidden');
+        });
+    }
+
     const elements = document.querySelectorAll('.animate-on-scroll');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -39,10 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.toggle('active');
             content.classList.toggle('active');
             
-            // Toggle icon rotation
+            // Smoothly toggle content height
             if (header.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + 'px';
                 icon.style.transform = 'rotate(180deg)';
             } else {
+                content.style.maxHeight = '0';
                 icon.style.transform = 'rotate(0)';
             }
         });
