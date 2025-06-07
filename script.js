@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.forEach(element => observer.observe(element));
 });
 
-// Smooth scroll for nav links
-document.querySelectorAll('.nav-link').forEach(anchor => {
+// Smooth scroll for nav links and custom buttons
+document.querySelectorAll('.nav-link, .btn-custom').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        console.log('Nút Khám Phá Ngay đã được click!');
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
